@@ -1,0 +1,99 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Media from "../../assets/components/Media.astro";
+import { projects } from "../../data/projects";
+
+export function getStaticPaths() {
+    return projects.map((project) => ({
+        params: { project: project.id },
+        props: { project },
+    }));
+}
+
+const { project } = Astro.props;
+---
+
+<Layout title={`Applied Archive Atelier — ${project.client}`}>
+    <main
+        class="flex flex-col justify-start px-2 w-full h-fit text-xs leading-[115%]"
+    >
+        <div class="grid grid-cols-18 gap-2 pt-[calc(var(--nav-height)*1.2)]">
+            <aside
+                class="col-span-4 self-start flex flex-col gap-2 justify-start sticky top-[calc(var(--nav-height)*1.2)]"
+            >
+                <h1 class="uppercase">{project.client}</h1>
+                <p class="opacity-70 pt-2">Project Info</p>
+                <div class="flex flex-col gap-2">
+                    <p>{project.description}</p>
+                </div>
+
+                {
+                    project.credits && project.credits.length > 0 && (
+                        <div class="flex flex-col gap-2 pt-4">
+                            <p class="opacity-70">Credits</p>
+                            {project.credits.map((credit) => (
+                                <p>{credit}</p>
+                            ))}
+                        </div>
+                    )
+                }
+
+                {
+                    project.links && project.links.length > 0 && (
+                        <div class="flex flex-col gap-2 pt-4">
+                            <p class="opacity-70">Links</p>
+                            <div class="grid grid-cols-2 gap-2">
+                                {project.links.map((link) => (
+                                    <a href={link.href}>
+                                        {link.label}{" "}
+                                        <span class="text-[10px]">↗</span>
+                                    </a>
+                                ))}
+                            </div>
+                        </div>
+                    )
+                }
+            </aside>
+
+            <div class="col-span-14 h-fit flex flex-col justify-start gap-2">
+                {
+                    project.media.map((row) =>
+                        Array.isArray(row) ? (
+                            <div class="grid grid-cols-2 gap-2">
+                                <Media item={row[0]} />
+                                <Media item={row[1]} />
+                            </div>
+                        ) : (
+                            <Media item={row} />
+                        ),
+                    )
+                }
+            </div>
+        </div>
+    </main>
+
+    <script>
+        customElements.whenDefined("mux-player").then(() => {
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        const player = entry.target as HTMLElement & {
+                            play(): Promise<void>;
+                            pause(): void;
+                        };
+                        if (entry.isIntersecting) {
+                            player.play().catch(() => {});
+                        } else {
+                            player.pause();
+                        }
+                    });
+                },
+                { threshold: 0.5 },
+            );
+
+            document.querySelectorAll("mux-player").forEach((player) => {
+                observer.observe(player);
+            });
+        });
+    </script>
+</Layout>

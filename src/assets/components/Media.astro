@@ -1,0 +1,28 @@
+---
+import { Image } from "astro:assets";
+import { MuxPlayer } from "@mux/mux-player-astro";
+import type { MediaItem } from "../../data/projects";
+
+interface Props {
+    item: MediaItem;
+}
+
+const { item } = Astro.props;
+---
+
+{
+    item.kind === "image" ? (
+        <Image src={item.src} alt={item.alt ?? ""} class="w-full h-auto" />
+    ) : (
+        <MuxPlayer
+            playback-id={item.muxPlaybackId}
+            class="w-full"
+            style="--media-background-color: white;"
+            loop
+            muted
+            max-resolution="2160p"
+            playsinline
+            preload="auto"
+        />
+    )
+}

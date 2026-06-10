@@ -1,0 +1,199 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import manifesto from "../assets/images/manifesto.png";
+import approach from "../assets/images/APPROACH.png";
+---
+
+<Layout title="Applied Archive Atelier">
+    <style is:global>
+        :root {
+            --nav-bg: var(--color-green);
+            --page-bg: var(--color-green);
+        }
+    </style>
+    <main
+        class="flex flex-col justify-start px-2 w-full text-xs leading-[115%]"
+    >
+        <div class="fixed inset-x-0 bottom-0 px-2 pb-2 pointer-events-none">
+            <div class="relative w-full">
+                <Image
+                    src={manifesto}
+                    alt="Manifesto"
+                    data-bg="manifesto"
+                    class="w-full opacity-10 block"
+                />
+                <Image
+                    src={approach}
+                    alt="Approach"
+                    data-bg="approach"
+                    class="w-full opacity-0 absolute inset-0"
+                />
+            </div>
+        </div>
+
+        <div
+            class="grid grid-cols-18 gap-2 mt-[98vh] pointer-events-none z-60 pb-2"
+        >
+            <div
+                data-manifesto-text
+                class="col-start-4 col-span-12 text-center uppercase text-header leading-[100%] tracking-[-0.045em] font-bold"
+            >
+                There is work you take because it pays.<br /><br />
+                There is work you take because it interests you.<br /><br /><br
+                /><br />
+                And then there is the other kind.<br />
+                The kind that keeps you up.<br /><br /><br /><br />
+
+                That work deserves more.<br /><br /><br /><br />
+
+                Some work is bigger than any one pair of hands.<br /><br /><br
+                />
+                So independent practices came together,<br /><br />
+                each with its own craft,<br /><br />
+                drawn by the work<br />and by each other,<br /><br />
+                until it could finally be carried the way it deserved.<br /><br
+                /><br /><br />
+
+                It became a cooperative.<br /><br /><br />
+                One member,<br />one vote.<br /><br />Every voice<br />weighs
+                the same.<br /><br /><br />
+                The work flows to whoever can carry it best.<br /><br />
+                And the credit stays with the work,<br /><br />
+                because how it is built<br />is part of what it stands for.<br
+                /><br /><br />
+
+                The work is carried long after the launch,<br /><br />
+                when the applause has faded and the making goes on.<br /><br />
+                Devotion outlasts attention.<br /><br /><br />
+
+                If what you are building matters to the people you serve,<br />
+                there is a place for it here,<br />
+                people who carry it with you and stay.<br /><br /><br />
+            </div>
+        </div>
+
+        <div class="h-screen min-h-200 pointer-events-none z-0"></div>
+
+        <div
+            data-pillars-section
+            class="h-screen flex flex-col justify-end pb-2 z-40 pointer-events-none"
+        >
+            <div class="grid grid-cols-4 md:grid-cols-18 gap-2">
+                <div
+                    data-pillar="welcome"
+                    class="col-start-1 col-span-1 md:col-span-4 bg-black text-green uppercase text-justify font-bold text-md h-[70vh] min-h-150 leading-[115%] tracking-[-0.04em] p-2 will-change-transform"
+                >
+                    Welcome.<br /><br />
+                    Open the door to every voice, every story. Honour every heritage,
+                    every face.
+                </div>
+                <div
+                    data-pillar="craft"
+                    class="col-span-1 md:col-span-4 bg-black text-green uppercase text-justify font-bold text-md h-[70vh] min-h-150 leading-[115%] tracking-[-0.04em] p-2 will-change-transform"
+                >
+                    Craft.<br /><br />
+                    Fashion living archives, equal to the desires of the age.
+                </div>
+                <div
+                    data-pillar="amplify"
+                    class="col-span-1 md:col-span-4 bg-black text-green uppercase text-justify font-bold text-md h-[70vh] min-h-150 leading-[115%] tracking-[-0.04em] p-2 will-change-transform"
+                >
+                    Amplify.<br /><br />
+                    Translate singular dreams and the utopias at the margins. Weave
+                    bonds between progress and humanity.
+                </div>
+                <div
+                    data-pillar="cultivate"
+                    class="col-span-1 md:col-span-4 bg-black text-green uppercase text-justify font-bold text-md h-[70vh] min-h-150 leading-[115%] tracking-[-0.04em] p-2 will-change-transform"
+                >
+                    Cultivate<br /><br />
+                    Act with conviction and ethics, to elevate projects and their
+                    missions. Illuminate. Open conversations guided by real needs.
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        import { gsap } from "gsap";
+        import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+        gsap.registerPlugin(ScrollTrigger);
+
+        const pillars = gsap.utils.toArray<HTMLElement>("[data-pillar]");
+
+        gsap.set(pillars, { yPercent: 130 });
+
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: "[data-pillars-section]",
+                start: "top top",
+                end: "+=400%",
+                pin: true,
+                pinSpacing: true,
+                anticipatePin: 1,
+                scrub: 0.3,
+                invalidateOnRefresh: true,
+            },
+        });
+
+        pillars.forEach((pillar) => {
+            tl.to(pillar, { yPercent: 0, duration: 1, ease: "none" });
+        });
+
+        const bgManifesto = document.querySelector<HTMLElement>(
+            '[data-bg="manifesto"]',
+        );
+        const bgApproach = document.querySelector<HTMLElement>(
+            '[data-bg="approach"]',
+        );
+
+        ScrollTrigger.create({
+            trigger: "[data-pillars-section]",
+            start: "top bottom",
+            onEnter: () => {
+                gsap.to(bgManifesto, { opacity: 0, duration: 0.5 });
+                gsap.to(bgApproach, { opacity: 0.1, duration: 0.5 });
+            },
+            onLeaveBack: () => {
+                gsap.to(bgManifesto, { opacity: 0.1, duration: 0.5 });
+                gsap.to(bgApproach, { opacity: 0, duration: 0.5 });
+            },
+        });
+
+        const pillarOrder = pillars
+            .map((p) => p.dataset.pillar)
+            .filter((n): n is string => Boolean(n));
+
+        function scrollToPillar(name: string) {
+            const idx = pillarOrder.indexOf(name);
+            const trigger = tl.scrollTrigger;
+            if (idx === -1 || !trigger) return;
+            const progress = (idx + 1) / pillarOrder.length;
+            const targetY =
+                trigger.start + (trigger.end - trigger.start) * progress;
+
+            const lenis = (window as any).lenis;
+            if (lenis?.scrollTo) {
+                lenis.scrollTo(targetY, { immediate: false });
+            } else {
+                window.scrollTo({ top: targetY, behavior: "smooth" });
+            }
+        }
+
+        function handleHash() {
+            const name = window.location.hash.slice(1);
+            if (name) scrollToPillar(name);
+        }
+
+        window.addEventListener("load", () => {
+            ScrollTrigger.refresh();
+            if (window.location.hash) {
+                requestAnimationFrame(handleHash);
+            }
+        });
+
+        window.addEventListener("hashchange", handleHash);
+    </script>
+</Layout>

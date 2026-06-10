@@ -1,0 +1,124 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+import { Image } from "astro:assets";
+import { MuxPlayer } from "@mux/mux-player-astro";
+
+import { projects } from "../data/projects";
+---
+
+<Layout title="Applied Archive Atelier">
+    <main class="flex flex-col items-center justify-center px-2">
+        <section
+            id="tagline"
+            class="h-screen min-h-270 flex flex-col justify-center items-center"
+        >
+            <h3 class="text-md bg-green leading-[120%] px-1 pt-0.5">
+                Some work is worth doing together.
+            </h3>
+        </section>
+        <section id="projects" class="flex flex-col w-full gap-25">
+            <div
+                class="grid grid-cols-18 gap-2 text-xs leading-[100%] sticky items-end bg-white top-[calc(var(--nav-height))] pt-[calc(1.75*var(--nav-gap))] pb-4 z-49"
+            >
+                <div class="col-span-2">Index</div>
+                <div class="col-span-6">Client</div>
+                <div class="col-span-4">Services</div>
+                <div class="col-span-3">Team</div>
+                <div class="col-span-3">Date</div>
+            </div>
+            <div class="flex flex-col gap-25">
+                {
+                    projects.map((project) => (
+                        <a
+                            href={`/projects/${project.id}`}
+                            id={project.id}
+                            data-project
+                            class="grid grid-cols-18 text-xs leading-[100%]"
+                        >
+                            <div class="grid grid-cols-18 gap-2 col-span-18 sticky top-[calc(var(--nav-height)+2*var(--nav-gap))] pt-6 pb-0.5 z-40 bg-white">
+                                <div class="col-span-2">{project.index}</div>
+                                <div class="col-span-6 grid grid-cols-6">
+                                    <div class="col-span-5">
+                                        {project.client}
+                                        <div class="pt-[2em]">
+                                            {project.description}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-span-4">{project.services}</div>
+                                <div class="col-span-3">{project.team}</div>
+                                <div class="col-span-3 flex flex-row justify-between">
+                                    <div>{project.date}</div>
+                                    <div>[+]</div>
+                                </div>
+                            </div>
+                            <div class="col-span-16 md:col-span-10 col-start-3 pt-1.5">
+                                <div class="relative w-full overflow-hidden flex bg-green group">
+                                    {project.muxPlaybackId ? (
+                                        <div
+                                            class="relative w-full bg-cover bg-center group-hover:mix-blend-multiply"
+                                            style={
+                                                project.thumbnail
+                                                    ? `background-image: url('${project.thumbnail}')`
+                                                    : ""
+                                            }
+                                        >
+                                            <MuxPlayer
+                                                playback-id={
+                                                    project.muxPlaybackId
+                                                }
+                                                class="w-full object-cover h-full"
+                                                style="--media-background-color: white;"
+                                                loop
+                                                muted
+                                                preload="auto"
+                                            />
+                                            <div class="absolute inset-0 z-10" />
+                                        </div>
+                                    ) : project.image ? (
+                                        <Image
+                                            src={project.image}
+                                            alt={project.imageAlt ?? ""}
+                                            class="w-full h-fit object-cover group-hover:mix-blend-multiply ease-in transition duration-500"
+                                        />
+                                    ) : null}
+                                    <div class="absolute inset-0 z-20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none mix-blend-difference">
+                                        <span class="text-white text-xs">
+                                            View Project
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    ))
+                }
+            </div>
+        </section>
+    </main>
+
+    <script>
+        customElements.whenDefined("mux-player").then(() => {
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        const player = entry.target as HTMLElement & {
+                            play(): Promise<void>;
+                            pause(): void;
+                        };
+                        if (entry.isIntersecting) {
+                            player.play().catch(() => {});
+                        } else {
+                            player.pause();
+                        }
+                    });
+                },
+                { threshold: 0.5 },
+            );
+
+            document.querySelectorAll("mux-player").forEach((player) => {
+                observer.observe(player);
+            });
+        });
+    </script>
+</Layout>

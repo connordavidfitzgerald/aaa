@@ -1,0 +1,328 @@
+<nav
+    data-navbar
+    class="fixed top-0 left-0 w-full p-2 flex flex-col justify-start font-sans leading-[120%] z-50"
+    style="background: var(--nav-bg); gap: var(--nav-gap); transition: gap 0.05s linear;"
+>
+    <a
+        href="/"
+        class="col-span-12 flex flex-row w-full justify-between items-start h-fit leading-[82%] tracking-[-0.05em]"
+        style="font-size: calc(var(--text-header) * (1 - var(--nav-shrink)) + var(--text-xs) * var(--nav-shrink));"
+    >
+        <h1 class="font-bold text-left flex grow">APPLIED</h1>
+        <h1 class="font-bold text-center flex grow">ARCHIVE</h1>
+        <h1 class="font-bold text-right">ATELIER</h1>
+    </a>
+    <div class="grid grid-cols-18 gap-2 text-xs leading-[115%] border-b-black">
+        <div class="col-span-4 grid grid-cols-2 gap-2">
+            <a
+                href="/"
+                data-nav-link
+                data-nav-header
+                class="relative opacity-70 flex items-start w-full h-fit col-span-2 md:col-span-1"
+            >
+                <span
+                    data-nav-hl
+                    class="absolute inset-0 bg-green scale-y-0 origin-top"
+                ></span>
+                <span class="relative z-10">Selected Projects</span>
+            </a>
+            <div class="hidden md:flex flex-col w-full">
+                <a
+                    href="/projects/bxb"
+                    data-nav-link
+                    class="relative flex items-center w-full"
+                >
+                    <span
+                        data-nav-hl
+                        class="absolute inset-0 bg-green scale-y-0 origin-top"
+                    ></span>
+                    <span class="relative z-10">Brique par brique</span>
+                </a>
+                <a
+                    href="/projects/chimie"
+                    data-nav-link
+                    class="relative flex items-center w-full"
+                >
+                    <span
+                        data-nav-hl
+                        class="absolute inset-0 bg-green scale-y-0 origin-top"
+                    ></span>
+                    <span class="relative z-10">Chimie</span>
+                </a>
+                <a
+                    href="/projects/ctrl"
+                    data-nav-link
+                    class="relative flex items-center w-full"
+                >
+                    <span
+                        data-nav-hl
+                        class="absolute inset-0 bg-green scale-y-0 origin-top"
+                    ></span>
+                    <span class="relative z-10">CTRL+ALT</span>
+                </a>
+                <a
+                    href="/projects/ecozoic"
+                    data-nav-link
+                    class="relative flex items-center w-full"
+                >
+                    <span
+                        data-nav-hl
+                        class="absolute inset-0 bg-green scale-y-0 origin-top"
+                    ></span>
+                    <span class="relative z-10">Ecozoic</span>
+                </a>
+                <a
+                    href="/projects/ellipse"
+                    data-nav-link
+                    class="relative flex items-center w-full"
+                >
+                    <span
+                        data-nav-hl
+                        class="absolute inset-0 bg-green scale-y-0 origin-top"
+                    ></span>
+                    <span class="relative z-10">Ellipse Magazine</span>
+                </a>
+            </div>
+        </div>
+        <div class="col-span-4 grid grid-cols-2 gap-2">
+            <a
+                href="/manifesto"
+                data-nav-link
+                data-nav-header
+                class="relative opacity-70 flex items-start w-full h-fit col-span-2 md:col-span-1"
+            >
+                <span
+                    data-nav-hl
+                    class="absolute inset-0 bg-green scale-y-0 origin-top"
+                ></span>
+                <span class="relative z-10">Manifesto</span>
+            </a>
+            <div class="hidden md:flex flex-col w-full">
+                <a
+                    href="/manifesto#welcome"
+                    data-nav-link
+                    class="relative flex items-center w-full"
+                >
+                    <span
+                        data-nav-hl
+                        class="absolute inset-0 bg-green scale-y-0 origin-top"
+                    ></span>
+                    <span class="relative z-10">Welcome</span>
+                </a>
+                <a
+                    href="/manifesto#craft"
+                    data-nav-link
+                    class="relative flex items-center w-full"
+                >
+                    <span
+                        data-nav-hl
+                        class="absolute inset-0 bg-green scale-y-0 origin-top"
+                    ></span>
+                    <span class="relative z-10">Craft</span>
+                </a>
+                <a
+                    href="/manifesto#amplify"
+                    data-nav-link
+                    class="relative flex items-center w-full"
+                >
+                    <span
+                        data-nav-hl
+                        class="absolute inset-0 bg-green scale-y-0 origin-top"
+                    ></span>
+                    <span class="relative z-10">Amplify</span>
+                </a>
+                <a
+                    href="/manifesto#cultivate"
+                    data-nav-link
+                    class="relative flex items-center w-full"
+                >
+                    <span
+                        data-nav-hl
+                        class="absolute inset-0 bg-green scale-y-0 origin-top"
+                    ></span>
+                    <span class="relative z-10">Cultivate</span>
+                </a>
+            </div>
+        </div>
+        <div class="col-span-4 grid grid-cols-2 gap-2">
+            <a
+                href="/team"
+                data-nav-link
+                data-nav-header
+                class="relative opacity-70 flex items-start w-full h-fit col-span-2 md:col-span-1"
+            >
+                <span
+                    data-nav-hl
+                    class="absolute inset-0 bg-green scale-y-0 origin-top"
+                ></span>
+                <span class="relative z-10">Team</span>
+            </a>
+            <div class="hidden md:flex flex-col w-full">
+                <a
+                    href="/team/jean-julien"
+                    data-nav-link
+                    class="relative flex items-center w-full"
+                >
+                    <span
+                        data-nav-hl
+                        class="absolute inset-0 bg-green scale-y-0 origin-top"
+                    ></span>
+                    <span class="relative z-10">Jean-Julien Hazoumé</span>
+                </a>
+                <a
+                    href="/team/luckensy"
+                    data-nav-link
+                    class="relative flex items-center w-full"
+                >
+                    <span
+                        data-nav-hl
+                        class="absolute inset-0 bg-green scale-y-0 origin-top"
+                    ></span>
+                    <span class="relative z-10">Luckensy Odigé</span>
+                </a>
+                <a
+                    href="/team/jordane"
+                    data-nav-link
+                    class="relative flex items-center w-full"
+                >
+                    <span
+                        data-nav-hl
+                        class="absolute inset-0 bg-green scale-y-0 origin-top"
+                    ></span>
+                    <span class="relative z-10">Jordane Kaluma</span>
+                </a>
+                <a
+                    href="/team/reatchy"
+                    data-nav-link
+                    class="relative flex items-center w-full"
+                >
+                    <span
+                        data-nav-hl
+                        class="absolute inset-0 bg-green scale-y-0 origin-top"
+                    ></span>
+                    <span class="relative z-10">Reatchy Legros</span>
+                </a>
+                <a
+                    href="/team/johnelle"
+                    data-nav-link
+                    class="relative flex items-center w-full"
+                >
+                    <span
+                        data-nav-hl
+                        class="absolute inset-0 bg-green scale-y-0 origin-top"
+                    ></span>
+                    <span class="relative z-10">Johnelle Smith</span>
+                </a>
+            </div>
+        </div>
+        <div class="col-span-4 grid grid-cols-2 gap-2">
+            <a
+                href="/"
+                data-nav-link
+                data-nav-header
+                class="relative opacity-70 flex items-start w-full h-fit col-span-2 md:col-span-1"
+            >
+                <span
+                    data-nav-hl
+                    class="absolute inset-0 bg-green scale-y-0 origin-top"
+                ></span>
+                <span class="relative z-10">Initiatives</span>
+            </a>
+            <div class="hidden md:flex flex-col w-full">
+                <a
+                    href="https://www.instagram.com/gia.grants/"
+                    data-nav-link
+                    class="relative flex items-center w-full"
+                >
+                    <span
+                        data-nav-hl
+                        class="absolute inset-0 bg-green scale-y-0 origin-top"
+                    ></span>
+                    <span class="relative z-10">Gia</span>
+                </a>
+                <a
+                    href="https://djt.al"
+                    data-nav-link
+                    class="relative flex items-center w-full"
+                >
+                    <span
+                        data-nav-hl
+                        class="absolute inset-0 bg-green scale-y-0 origin-top"
+                    ></span>
+                    <span class="relative z-10">DJTAL</span>
+                </a>
+                <a
+                    data-nav-link
+                    class="relative flex items-center w-full h-fit"
+                >
+                    <span
+                        data-nav-hl
+                        class="absolute inset-0 bg-green scale-y-0 origin-top"
+                    ></span>
+                    <span class="relative z-10">Espace Septima</span>
+                </a>
+            </div>
+        </div>
+        <div class="col-span-2 flex flex-row justify-end items-start">
+            <a
+                href="/contact"
+                data-nav-link
+                class="relative flex items-center justify-end w-full"
+            >
+                <span
+                    data-nav-hl
+                    class="absolute inset-0 bg-green scale-y-0 origin-top"
+                ></span>
+                <span class="relative z-10">
+                    <span class="md:hidden text-nowrap"
+                        >Let's talk <span class="text-[10px]">↗</span></span
+                    >
+                    <span class="hidden md:inline"
+                        >Start a <span class="text-nowrap"
+                            >conversation <span class="text-[10px]">↗</span
+                            ></span
+                        ></span
+                    >
+                </span>
+            </a>
+        </div>
+    </div>
+</nav>
+
+<script>
+    const nav = document.querySelector<HTMLElement>("[data-navbar]");
+    const root = document.documentElement;
+    const SCROLL_RANGE = 800;
+    let ticking = false;
+
+    function updateShrink() {
+        const progress = Math.min(
+            1,
+            Math.max(0, window.scrollY / SCROLL_RANGE),
+        );
+        root.style.setProperty("--nav-shrink", progress.toString());
+        ticking = false;
+    }
+
+    function onScroll() {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(updateShrink);
+    }
+
+    function updateHeight() {
+        if (!nav) return;
+        root.style.setProperty(
+            "--nav-height",
+            `${nav.getBoundingClientRect().height}px`,
+        );
+    }
+
+    if (nav) {
+        updateShrink();
+        updateHeight();
+        window.addEventListener("scroll", onScroll, { passive: true });
+        const ro = new ResizeObserver(updateHeight);
+        ro.observe(nav);
+    }
+</script>

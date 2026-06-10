@@ -1,0 +1,223 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import team from "../assets/images/team.jpg";
+import jj from "../assets/images/jj.jpg";
+import luckensy from "../assets/images/luckensy.jpg";
+import jordane from "../assets/images/jordane.jpg";
+import johnelle from "../assets/images/johnelle.jpg";
+import reatchy from "../assets/images/reatchy.jpg";
+
+const core = [
+    {
+        key: "jj",
+        slug: "jean-julien",
+        name: "Jean-Julien Hazoumé",
+        role: "Co-Founder, Designer",
+        location: "Montréal, QC",
+    },
+    {
+        key: "luckensy",
+        slug: "luckensy",
+        name: "Luckensy Odigé",
+        role: "Co-Founder, Designer",
+        location: "Montréal, QC",
+    },
+    {
+        key: "jordane",
+        slug: "jordane",
+        name: "Jordane Kaluma",
+        role: "Co-Founder, Copywriter",
+        location: "Montréal, QC",
+    },
+    {
+        key: "johnelle",
+        slug: "johnelle",
+        name: "Johnelle Smith",
+        role: "Co-Founder, Designer",
+        location: "Montréal, QC",
+    },
+    {
+        key: "reatchy",
+        slug: "reatchy",
+        name: "Reatchy Legros",
+        role: "Co-Founder, Photographer",
+        location: "Montréal, QC",
+    },
+];
+
+const collaborators = core;
+
+const memberImages = [
+    { key: "jj", src: jj, alt: "Jean-Julien Hazoumé" },
+    { key: "luckensy", src: luckensy, alt: "Luckensy Odigé" },
+    { key: "jordane", src: jordane, alt: "Jordane Kaluma" },
+    { key: "johnelle", src: johnelle, alt: "Johnelle Smith" },
+    { key: "reatchy", src: reatchy, alt: "Reatchy Legros" },
+];
+---
+
+<Layout title="Applied Archive Atelier">
+    <main
+        class="flex flex-col max-h-screen justify-start px-2 w-full h-fit text-xs leading-[115%]"
+    >
+        <div
+            class="pt-[calc(var(--nav-height)*1.2)] grid grid-cols-18 gap-2 w-full items-start h-screen overflow-hidden mb-2"
+        >
+            <div class="col-span-12 h-full flex flex-col justify-between pb-1">
+                <div class="w-full flex flex-col justify-start">
+                    <div class="grid grid-cols-12 gap-x-2 gap-y-0 pb-8">
+                        <div class="col-span-12 pb-4">Core</div>
+                        {
+                            core.map((member) => (
+                                <a
+                                    href={`/team/${member.slug}`}
+                                    data-team-row
+                                    data-member={member.key}
+                                    class="col-span-12 grid grid-cols-12 gap-x-2 relative"
+                                >
+                                    <span
+                                        data-team-hl
+                                        class="absolute inset-0 bg-green scale-y-0 origin-top"
+                                    />
+                                    <p class="col-span-4 relative z-10">
+                                        {member.name}
+                                    </p>
+                                    <p class="col-span-4 relative z-10">
+                                        {member.role}
+                                    </p>
+                                    <p class="col-span-3 relative z-10">
+                                        {member.location}
+                                    </p>
+                                </a>
+                            ))
+                        }
+                    </div>
+                    <div class="grid grid-cols-12 gap-x-2 gap-y-0 pb-8">
+                        <div class="col-span-12 pb-4">Collaborators</div>
+                        {
+                            collaborators.map((member) => (
+                                <a
+                                    href={`/team/${member.slug}`}
+                                    data-team-row
+                                    data-member={member.key}
+                                    class="col-span-12 grid grid-cols-12 gap-x-2 relative"
+                                >
+                                    <span
+                                        data-team-hl
+                                        class="absolute inset-0 bg-green scale-y-0 origin-top"
+                                    />
+                                    <p class="col-span-4 relative z-10">
+                                        {member.name}
+                                    </p>
+                                    <p class="col-span-4 relative z-10">
+                                        {member.role}
+                                    </p>
+                                    <p class="col-span-3 relative z-10">
+                                        {member.location}
+                                    </p>
+                                </a>
+                            ))
+                        }
+                    </div>
+                </div>
+                <div class="w-full flex flex-col justify-end">
+                    <div class="grid grid-cols-12 gap-2 h-fit">
+                        <p class="col-span-6 w-full">
+                            Though our team is small by design, we're always
+                            open to building relationships with standout
+                            creatives whose values strongly align with ours. If
+                            our approach resonates with you, we'd love to hear
+                            from you at jobs@appliedarchive.com.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-span-6 relative">
+                <Image
+                    src={team}
+                    alt="team"
+                    class="w-full h-auto block"
+                    data-team-image="default"
+                />
+                {
+                    memberImages.map((img) => (
+                        <Image
+                            src={img.src}
+                            alt={img.alt}
+                            data-team-image={img.key}
+                            class="absolute inset-0 w-full h-full object-cover block opacity-0"
+                        />
+                    ))
+                }
+            </div>
+        </div>
+    </main>
+
+    <script>
+        import { gsap } from "gsap";
+
+        const rows = document.querySelectorAll<HTMLElement>("[data-team-row]");
+        const memberImages = document.querySelectorAll<HTMLElement>(
+            '[data-team-image]:not([data-team-image="default"])',
+        );
+
+        const highlights =
+            document.querySelectorAll<HTMLElement>("[data-team-hl]");
+
+        function resetAll() {
+            highlights.forEach((hl) => {
+                gsap.set(hl, { scaleY: 0, transformOrigin: "center top" });
+            });
+            memberImages.forEach((img) => {
+                gsap.set(img, { opacity: 0 });
+            });
+        }
+
+        window.addEventListener("pageshow", () => resetAll());
+        window.addEventListener("pagehide", () => resetAll());
+
+        rows.forEach((row) => {
+            const hl = row.querySelector<HTMLElement>("[data-team-hl]");
+            const member = row.dataset.member;
+            if (!hl) return;
+
+            gsap.set(hl, { scaleY: 0, transformOrigin: "center top" });
+
+            row.addEventListener("mouseenter", () => {
+                gsap.to(hl, {
+                    scaleY: 1,
+                    transformOrigin: "center top",
+                    duration: 0.25,
+                    ease: "power3.out",
+                    overwrite: true,
+                });
+                memberImages.forEach((img) => {
+                    gsap.set(img, {
+                        opacity: img.dataset.teamImage === member ? 1 : 0,
+                    });
+                });
+            });
+
+            row.addEventListener("mouseleave", () => {
+                gsap.to(hl, {
+                    scaleY: 0,
+                    transformOrigin: "center bottom",
+                    duration: 0.05,
+                    ease: "power3.out",
+                    overwrite: true,
+                });
+                memberImages.forEach((img) => {
+                    gsap.set(img, { opacity: 0 });
+                });
+            });
+
+            row.addEventListener("click", () => {
+                gsap.set(hl, { scaleY: 0, transformOrigin: "center top" });
+                memberImages.forEach((img) => {
+                    gsap.set(img, { opacity: 0 });
+                });
+            });
+        });
+    </script>
+</Layout>

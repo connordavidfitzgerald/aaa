@@ -1,0 +1,159 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import jj from "../../assets/images/jj.jpg";
+import luckensy from "../../assets/images/luckensy.jpg";
+import jordane from "../../assets/images/jordane.jpg";
+import johnelle from "../../assets/images/johnelle.jpg";
+import reatchy from "../../assets/images/reatchy.jpg";
+
+export function getStaticPaths() {
+    const projects = ["Chimie", "Brique par brique", "Ecozoic"];
+    return [
+        {
+            params: { member: "jean-julien" },
+            props: {
+                name: "Jean-Julien Hazoumé",
+                role: "Co-Founder, Designer",
+                image: jj,
+                bio: "Jean-Julien Hazoumé, creative direction, design & development. Propels each mission toward the form that amplifies it – from a no-code site to an object",
+                instagram: "https://instagram.com",
+                linkedin: "https://linkedin.com",
+                projects,
+            },
+        },
+        {
+            params: { member: "luckensy" },
+            props: {
+                name: "Luckensy Odigé",
+                role: "Co-Founder, Designer",
+                image: luckensy,
+                bio: "Luckensy Odigé, graphic design, illustration, photography. Watches over the identity of a mission – poster, report, campaign, image – so it stays legible from one culture to the next.",
+                instagram: "https://instagram.com",
+                linkedin: "https://linkedin.com",
+                projects,
+            },
+        },
+        {
+            params: { member: "jordane" },
+            props: {
+                name: "Jordane Kaluma",
+                role: "Co-Founder, Copywriter",
+                image: jordane,
+                bio: "Jordane Kaluma, semiotics, creative strategy, funding. Reads the cultural signals beneath a project and turns them into positioning, language, and the funding that keeps a mission alive.",
+                instagram: "https://instagram.com",
+                linkedin: "https://linkedin.com",
+                projects,
+            },
+        },
+        {
+            params: { member: "johnelle" },
+            props: {
+                name: "Johnelle Smith",
+                role: "Co-Founder, Designer",
+                image: johnelle,
+                bio: "Johnelle Smith, graphic and experiential design. Treats design as cultural infrastructure – identities and spaces that make room for the artists, organizers, and institutions shaping cultural life.",
+                instagram: "https://instagram.com",
+                linkedin: "https://linkedin.com",
+                projects,
+            },
+        },
+        {
+            params: { member: "reatchy" },
+            props: {
+                name: "Reatchy Legros",
+                role: "Co-Founder, Photographer",
+                image: reatchy,
+                bio: "Reatchy Legros, direction and video. Directs and edits films that carry a point of view, from shoot to final cut – to mirror, question, and enchant the real.",
+                instagram: "https://instagram.com",
+                linkedin: "https://linkedin.com",
+                projects,
+            },
+        },
+    ];
+}
+
+const {
+    name,
+    role,
+    image,
+    bio,
+    instagram,
+    linkedin,
+    projects: memberProjects,
+} = Astro.props;
+---
+
+<Layout title={`${name} — Applied Archive Atelier`}>
+    <main
+        class="flex flex-col max-h-screen justify-start px-2 w-full h-fit text-xs leading-[115%]"
+    >
+        <div
+            class="pt-[calc(var(--nav-height)*1.2)] grid grid-cols-18 gap-2 w-full items-start h-screen overflow-hidden mb-2"
+        >
+            <div class="col-span-12 h-full flex flex-col justify-between pb-1">
+                <div class="w-full flex flex-col justify-start">
+                    <div class="grid grid-cols-12 gap-x-2 pb-4">
+                        <a
+                            href="/team"
+                            data-nav-link
+                            class="col-span-1 relative flex items-center w-full"
+                        >
+                            <span
+                                data-nav-hl
+                                class="absolute inset-0 bg-green scale-y-0 origin-top"
+                            ></span>
+                            <span class="relative z-10">Back</span>
+                        </a>
+                    </div>
+                    <div class="grid grid-cols-12 gap-x-2 gap-y-0 pb-8">
+                        <div class="col-span-4">
+                            <p>{name}</p>
+                            <p class="opacity-70">{role}</p>
+                        </div>
+                        <div
+                            class="col-span-4 grid grid-cols-4 gap-x-2 gap-y-4"
+                        >
+                            <div class="col-span-3 flex flex-col gap-2 pb-8">
+                                <p>{bio}</p>
+                            </div>
+                            <a
+                                href={instagram}
+                                class="col-span-2"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                Instagram <span class="text-[10px]">↗</span>
+                            </a>
+                            <a
+                                href={linkedin}
+                                class="col-span-2"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                LinkedIn <span class="text-[10px]">↗</span>
+                            </a>
+                        </div>
+                        <div class="col-span-3 flex flex-col">
+                            {memberProjects.map((p) => <p>{p}</p>)}
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full flex flex-col justify-end">
+                    <div class="grid grid-cols-12 gap-2 h-fit">
+                        <p class="col-span-6 w-full">
+                            Though our team is small by design, we're always
+                            open to building relationships with standout
+                            creatives whose values strongly align with ours. If
+                            our approach resonates with you, we'd love to hear
+                            from you at jobs@appliedarchive.com.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-span-6">
+                <Image src={image} alt={name} class="w-full h-auto block" />
+            </div>
+        </div>
+    </main>
+</Layout>
