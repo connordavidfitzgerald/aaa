@@ -8,7 +8,7 @@ import { projects } from "../data/projects";
 ---
 
 <Layout title="Applied Archive Atelier">
-    <main class="flex flex-col items-center justify-center px-2">
+    <main class="flex flex-col items-center justify-center px-2 pb-8">
         <section
             id="tagline"
             class="h-screen min-h-270 flex flex-col justify-center items-center"
@@ -17,15 +17,22 @@ import { projects } from "../data/projects";
                 Some work is worth doing together.
             </h3>
         </section>
-        <section id="projects" class="flex flex-col w-full gap-25">
+        <section
+            id="projects"
+            class="flex flex-col w-full gap-25 scroll-mt-[calc(var(--nav-height)*1.2)]"
+        >
             <div
-                class="grid grid-cols-18 gap-2 text-xs leading-[100%] sticky items-end bg-white top-[calc(var(--nav-height))] pt-[calc(1.75*var(--nav-gap))] pb-4 z-49"
+                class="grid grid-cols-18 gap-2 text-xs leading-[100%] sticky items-end bg-white top-[calc(var(--nav-height))] pt-[calc(0.5*var(--nav-gap))] pb-4 z-49 hidden"
             >
-                <div class="col-span-2">Index</div>
-                <div class="col-span-6">Client</div>
-                <div class="col-span-4">Services</div>
-                <div class="col-span-3">Team</div>
-                <div class="col-span-3">Date</div>
+                <div class="col-span-2 hidden"></div>
+                <div class="col-span-6 opacity-70 hidden">Project</div>
+                <div class="col-span-4 opacity-70 hidden">Services</div>
+                <div class="col-span-3 opacity-70 hidden">Credits</div>
+                <div
+                    class="col-span-3 flex flex-row justify-end opacity-70 hidden"
+                >
+                    Date
+                </div>
             </div>
             <div class="flex flex-col gap-25">
                 {
@@ -34,26 +41,31 @@ import { projects } from "../data/projects";
                             href={`/projects/${project.id}`}
                             id={project.id}
                             data-project
-                            class="grid grid-cols-18 text-xs leading-[100%]"
+                            class="grid grid-cols-18 text-xs"
                         >
-                            <div class="grid grid-cols-18 gap-2 col-span-18 sticky top-[calc(var(--nav-height)+2*var(--nav-gap))] pt-6 pb-0.5 z-40 bg-white">
-                                <div class="col-span-2">{project.index}</div>
-                                <div class="col-span-6 grid grid-cols-6">
-                                    <div class="col-span-5">
-                                        {project.client}
-                                        <div class="pt-[2em]">
+                            <div class="grid grid-cols-18 gap-2 col-span-18 sticky top-[calc(var(--nav-height)-0.5em)] h-fit pb-1 z-40 bg-white leading-[105%]">
+                                <div class="md:col-span-2 md:flex hidden" />
+                                <div class="md:col-span-6 col-span-8 grid-cols-8 grid md:grid-cols-6 mt-4">
+                                    <div class="md:col-span-5 col-span-8">
+                                        <div class="uppercase">
+                                            {project.client}
+                                        </div>
+                                        <div class="pt-[1em]">
                                             {project.description}
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-span-4">{project.services}</div>
-                                <div class="col-span-3">{project.team}</div>
-                                <div class="col-span-3 flex flex-row justify-between">
+                                <div class="col-span-4 mt-4">
+                                    {project.team}
+                                </div>
+                                <div class="col-span-3 mt-4">
+                                    {project.services}
+                                </div>
+                                <div class="col-span-3 flex flex-row justify-end mt-4">
                                     <div>{project.date}</div>
-                                    <div>[+]</div>
                                 </div>
                             </div>
-                            <div class="col-span-16 md:col-span-10 col-start-3 pt-1.5">
+                            <div class="col-span-18 md:col-span-16 md:col-start-3 pt-1.5">
                                 <div class="relative w-full overflow-hidden flex bg-green group">
                                     {project.muxPlaybackId ? (
                                         <div
@@ -72,6 +84,8 @@ import { projects } from "../data/projects";
                                                 style="--media-background-color: white;"
                                                 loop
                                                 muted
+                                                max-resolution="2160p"
+                                                min-resolution="1080p"
                                                 preload="auto"
                                             />
                                             <div class="absolute inset-0 z-10" />

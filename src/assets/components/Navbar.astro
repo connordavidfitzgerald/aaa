@@ -1,21 +1,21 @@
 <nav
     data-navbar
-    class="fixed top-0 left-0 w-full p-2 flex flex-col justify-start font-sans leading-[120%] z-50"
+    class="fixed top-0 left-0 w-full p-2 flex flex-col justify-start font-sans z-50"
     style="background: var(--nav-bg); gap: var(--nav-gap); transition: gap 0.05s linear;"
 >
     <a
         href="/"
         class="col-span-12 flex flex-row w-full justify-between items-start h-fit leading-[82%] tracking-[-0.05em]"
-        style="font-size: calc(var(--text-header) * (1 - var(--nav-shrink)) + var(--text-xs) * var(--nav-shrink));"
+        style="font-size: calc(var(--text-header) * (1 - var(--nav-shrink)) + var(--text-md) * var(--nav-shrink));"
     >
         <h1 class="font-bold text-left flex grow">APPLIED</h1>
         <h1 class="font-bold text-center flex grow">ARCHIVE</h1>
         <h1 class="font-bold text-right">ATELIER</h1>
     </a>
-    <div class="grid grid-cols-18 gap-2 text-xs leading-[115%] border-b-black">
+    <div class="grid grid-cols-18 gap-2 text-xs leading-[120%] border-b-black">
         <div class="col-span-4 grid grid-cols-2 gap-2">
             <a
-                href="/"
+                href="/#projects"
                 data-nav-link
                 data-nav-header
                 class="relative opacity-70 flex items-start w-full h-fit col-span-2 md:col-span-1"
@@ -217,7 +217,7 @@
         </div>
         <div class="col-span-4 grid grid-cols-2 gap-2">
             <a
-                href="/"
+                href="/initiatives"
                 data-nav-link
                 data-nav-header
                 class="relative opacity-70 flex items-start w-full h-fit col-span-2 md:col-span-1"

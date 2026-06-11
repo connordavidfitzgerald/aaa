@@ -37,39 +37,38 @@ import approach from "../assets/images/APPROACH.png";
         >
             <div
                 data-manifesto-text
-                class="col-start-4 col-span-12 text-center uppercase text-header leading-[100%] tracking-[-0.045em] font-bold"
+                class="col-start-3 col-span-14 text-center uppercase text-header leading-[100%] tracking-[-0.045em] font-bold"
             >
                 There is work you take because it pays.<br /><br />
-                There is work you take because it interests you.<br /><br /><br
-                /><br />
+                There is work you take because it interests you.<br /><br />
                 And then there is the other kind.<br />
-                The kind that keeps you up.<br /><br /><br /><br />
+                The kind that keeps you up.<br /><br />
 
                 That work deserves more.<br /><br /><br /><br />
 
-                Some work is bigger than any one pair of hands.<br /><br /><br
-                />
+                Some work is bigger than any one pair of hands.<br /><br />
                 So independent practices came together,<br /><br />
                 each with its own craft,<br /><br />
-                drawn by the work<br />and by each other,<br /><br />
+                drawn by the work and by each other,<br /><br />
                 until it could finally be carried the way it deserved.<br /><br
                 /><br /><br />
 
-                It became a cooperative.<br /><br /><br />
+                It became a cooperative.<br /><br />
                 One member,<br />one vote.<br /><br />Every voice<br />weighs
-                the same.<br /><br /><br />
+                the same.<br /><br />
                 The work flows to whoever can carry it best.<br /><br />
                 And the credit stays with the work,<br /><br />
-                because how it is built<br />is part of what it stands for.<br
-                /><br /><br />
+                because how it is built is part of what it stands for.<br /><br
+                /><br />
 
                 The work is carried long after the launch,<br /><br />
                 when the applause has faded and the making goes on.<br /><br />
                 Devotion outlasts attention.<br /><br /><br />
 
-                If what you are building matters to the people you serve,<br />
-                there is a place for it here,<br />
-                people who carry it with you and stay.<br /><br /><br />
+                If what you are building matters to the people you serve,<br
+                /><br />
+                there is a place for it here,<br /><br />
+                people who carry it with you and stay.
             </div>
         </div>
 
@@ -79,10 +78,10 @@ import approach from "../assets/images/APPROACH.png";
             data-pillars-section
             class="h-screen flex flex-col justify-end pb-2 z-40 pointer-events-none"
         >
-            <div class="grid grid-cols-4 md:grid-cols-18 gap-2">
+            <div class="grid grid-cols-2 md:grid-cols-18 gap-2">
                 <div
                     data-pillar="welcome"
-                    class="col-start-1 col-span-1 md:col-span-4 bg-black text-green uppercase text-justify font-bold text-md h-[70vh] min-h-150 leading-[115%] tracking-[-0.04em] p-2 will-change-transform"
+                    class="col-start-1 col-span-1 md:col-span-4 bg-black text-green uppercase text-justify font-bold text-md h-[35vh] min-h-75 md:h-[70vh] md:min-h-150 leading-[115%] tracking-[-0.04em] p-2 will-change-transform"
                 >
                     Welcome.<br /><br />
                     Open the door to every voice, every story. Honour every heritage,
@@ -90,14 +89,14 @@ import approach from "../assets/images/APPROACH.png";
                 </div>
                 <div
                     data-pillar="craft"
-                    class="col-span-1 md:col-span-4 bg-black text-green uppercase text-justify font-bold text-md h-[70vh] min-h-150 leading-[115%] tracking-[-0.04em] p-2 will-change-transform"
+                    class="col-span-1 md:col-span-4 bg-black text-green uppercase text-justify font-bold text-md h-[35vh] min-h-75 md:h-[70vh] md:min-h-150 leading-[115%] tracking-[-0.04em] p-2 will-change-transform"
                 >
                     Craft.<br /><br />
                     Fashion living archives, equal to the desires of the age.
                 </div>
                 <div
                     data-pillar="amplify"
-                    class="col-span-1 md:col-span-4 bg-black text-green uppercase text-justify font-bold text-md h-[70vh] min-h-150 leading-[115%] tracking-[-0.04em] p-2 will-change-transform"
+                    class="col-span-1 md:col-span-4 bg-black text-green uppercase text-justify font-bold text-md h-[35vh] min-h-75 md:h-[70vh] md:min-h-150 leading-[115%] tracking-[-0.04em] p-2 will-change-transform"
                 >
                     Amplify.<br /><br />
                     Translate singular dreams and the utopias at the margins. Weave
@@ -105,7 +104,7 @@ import approach from "../assets/images/APPROACH.png";
                 </div>
                 <div
                     data-pillar="cultivate"
-                    class="col-span-1 md:col-span-4 bg-black text-green uppercase text-justify font-bold text-md h-[70vh] min-h-150 leading-[115%] tracking-[-0.04em] p-2 will-change-transform"
+                    class="col-span-1 md:col-span-4 bg-black text-green uppercase text-justify font-bold text-md h-[35vh] min-h-75 md:h-[70vh] md:min-h-150 leading-[115%] tracking-[-0.04em] p-2 will-change-transform"
                 >
                     Cultivate<br /><br />
                     Act with conviction and ethics, to elevate projects and their
@@ -123,7 +122,9 @@ import approach from "../assets/images/APPROACH.png";
 
         const pillars = gsap.utils.toArray<HTMLElement>("[data-pillar]");
 
-        gsap.set(pillars, { yPercent: 130 });
+        const isMobile = window.matchMedia("(max-width: 767px)").matches;
+        const startYPercent = isMobile ? 220 : 130;
+        gsap.set(pillars, { yPercent: startYPercent });
 
         const tl = gsap.timeline({
             scrollTrigger: {

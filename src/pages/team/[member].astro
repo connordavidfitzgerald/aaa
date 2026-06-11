@@ -1,6 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import { Image } from "astro:assets";
+import { projects } from "../../data/projects";
 import jj from "../../assets/images/jj.jpg";
 import luckensy from "../../assets/images/luckensy.jpg";
 import jordane from "../../assets/images/jordane.jpg";
@@ -8,7 +9,7 @@ import johnelle from "../../assets/images/johnelle.jpg";
 import reatchy from "../../assets/images/reatchy.jpg";
 
 export function getStaticPaths() {
-    const projects = ["Chimie", "Brique par brique", "Ecozoic"];
+    const projectIds = ["chimie", "bxb", "ecozoic"];
     return [
         {
             params: { member: "jean-julien" },
@@ -19,7 +20,7 @@ export function getStaticPaths() {
                 bio: "Jean-Julien Hazoumé, creative direction, design & development. Propels each mission toward the form that amplifies it – from a no-code site to an object",
                 instagram: "https://instagram.com",
                 linkedin: "https://linkedin.com",
-                projects,
+                projectIds,
             },
         },
         {
@@ -31,7 +32,7 @@ export function getStaticPaths() {
                 bio: "Luckensy Odigé, graphic design, illustration, photography. Watches over the identity of a mission – poster, report, campaign, image – so it stays legible from one culture to the next.",
                 instagram: "https://instagram.com",
                 linkedin: "https://linkedin.com",
-                projects,
+                projectIds,
             },
         },
         {
@@ -43,7 +44,7 @@ export function getStaticPaths() {
                 bio: "Jordane Kaluma, semiotics, creative strategy, funding. Reads the cultural signals beneath a project and turns them into positioning, language, and the funding that keeps a mission alive.",
                 instagram: "https://instagram.com",
                 linkedin: "https://linkedin.com",
-                projects,
+                projectIds,
             },
         },
         {
@@ -55,7 +56,7 @@ export function getStaticPaths() {
                 bio: "Johnelle Smith, graphic and experiential design. Treats design as cultural infrastructure – identities and spaces that make room for the artists, organizers, and institutions shaping cultural life.",
                 instagram: "https://instagram.com",
                 linkedin: "https://linkedin.com",
-                projects,
+                projectIds,
             },
         },
         {
@@ -67,56 +68,93 @@ export function getStaticPaths() {
                 bio: "Reatchy Legros, direction and video. Directs and edits films that carry a point of view, from shoot to final cut – to mirror, question, and enchant the real.",
                 instagram: "https://instagram.com",
                 linkedin: "https://linkedin.com",
-                projects,
+                projectIds,
             },
         },
     ];
 }
 
-const {
-    name,
-    role,
-    image,
-    bio,
-    instagram,
-    linkedin,
-    projects: memberProjects,
-} = Astro.props;
+const { name, role, image, bio, instagram, linkedin, projectIds } = Astro.props;
+
+const memberProjects = projectIds
+    .map((id: string) => projects.find((p) => p.id === id))
+    .filter((p): p is (typeof projects)[number] => Boolean(p));
 ---
 
 <Layout title={`${name} — Applied Archive Atelier`}>
     <main
-        class="flex flex-col max-h-screen justify-start px-2 w-full h-fit text-xs leading-[115%]"
+        class="flex flex-col justify-start px-2 w-full h-fit text-xs leading-[115%]"
     >
         <div
-            class="pt-[calc(var(--nav-height)*1.2)] grid grid-cols-18 gap-2 w-full items-start h-screen overflow-hidden mb-2"
+            class="pt-[calc(var(--nav-height)*1.2)] grid grid-cols-1 md:grid-cols-18 gap-2 w-full items-stretch md:items-start mb-2 pb-2 md:pb-0"
         >
-            <div class="col-span-12 h-full flex flex-col justify-between pb-1">
+            <div
+                class="md:col-span-8 flex flex-col justify-between gap-2 md:gap-0 min-h-[calc(100svh-var(--nav-height)*1.2-1rem)] md:min-h-0 md:h-[calc(100svh-var(--nav-height)*1.2-1rem)] md:sticky md:top-[calc(var(--nav-height)*1.2)] md:self-start"
+            >
                 <div class="w-full flex flex-col justify-start">
-                    <div class="grid grid-cols-12 gap-x-2 pb-4">
-                        <a
-                            href="/team"
-                            data-nav-link
-                            class="col-span-1 relative flex items-center w-full"
+                    <a
+                        href="/team"
+                        data-nav-link
+                        class="relative w-fit py-2 md:py-0 mb-4 flex items-center"
+                    >
+                        <span
+                            data-nav-hl
+                            class="absolute inset-0 bg-green scale-y-0 origin-top"
+                        ></span>
+                        <span class="relative z-10">← BACK</span>
+                    </a>
+                    <div
+                        class="grid grid-cols-8 gap-x-2 gap-y-6 md:gap-y-4 pb-2 md:pb-8"
+                    >
+                        <div
+                            class="col-span-5 row-start-1 h-full flex flex-col justify-between md:hidden"
                         >
-                            <span
-                                data-nav-hl
-                                class="absolute inset-0 bg-green scale-y-0 origin-top"
-                            ></span>
-                            <span class="relative z-10">Back</span>
-                        </a>
-                    </div>
-                    <div class="grid grid-cols-12 gap-x-2 gap-y-0 pb-8">
-                        <div class="col-span-4">
+                            <div class="flex flex-col gap-2">
+                                <div>
+                                    <p>{name}</p>
+                                    <p class="opacity-70">{role}</p>
+                                </div>
+                                <p>{bio}</p>
+                            </div>
+                            <div class="grid grid-cols-4 gap-x-2">
+                                <a
+                                    href={instagram}
+                                    class="col-span-2"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    Instagram <span class="text-[10px]">↗</span>
+                                </a>
+                                <a
+                                    href={linkedin}
+                                    class="col-span-2"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    LinkedIn <span class="text-[10px]">↗</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div
+                            class="col-span-3 row-start-1 md:row-start-2 aspect-square"
+                        >
+                            <Image
+                                src={image}
+                                alt={name}
+                                class="w-full h-full object-cover block"
+                            />
+                        </div>
+
+                        <div
+                            class="hidden md:block md:col-start-1 md:col-span-3 md:row-start-1"
+                        >
                             <p>{name}</p>
                             <p class="opacity-70">{role}</p>
                         </div>
                         <div
-                            class="col-span-4 grid grid-cols-4 gap-x-2 gap-y-4"
+                            class="hidden md:grid md:col-start-5 md:col-span-4 md:row-start-1 md:row-span-2 grid-cols-4 gap-x-2 gap-y-4 h-fit"
                         >
-                            <div class="col-span-3 flex flex-col gap-2 pb-8">
-                                <p>{bio}</p>
-                            </div>
+                            <p class="col-span-3 pb-8">{bio}</p>
                             <a
                                 href={instagram}
                                 class="col-span-2"
@@ -134,14 +172,38 @@ const {
                                 LinkedIn <span class="text-[10px]">↗</span>
                             </a>
                         </div>
-                        <div class="col-span-3 flex flex-col">
-                            {memberProjects.map((p) => <p>{p}</p>)}
-                        </div>
+                    </div>
+                    <div class="flex md:hidden opacity-70 pt-10 pb-1">
+                        Selected Projects
+                    </div>
+                    <div class="md:hidden flex flex-col gap-2 md:pb-4">
+                        {
+                            memberProjects.map((project) => (
+                                <a
+                                    href={`/projects/${project.id}`}
+                                    class="block w-full"
+                                >
+                                    {project.image ? (
+                                        <Image
+                                            src={project.image}
+                                            alt={project.client}
+                                            class="w-full h-auto block"
+                                        />
+                                    ) : project.thumbnail ? (
+                                        <img
+                                            src={project.thumbnail}
+                                            alt={project.client}
+                                            class="w-full h-auto block"
+                                        />
+                                    ) : null}
+                                </a>
+                            ))
+                        }
                     </div>
                 </div>
                 <div class="w-full flex flex-col justify-end">
-                    <div class="grid grid-cols-12 gap-2 h-fit">
-                        <p class="col-span-6 w-full">
+                    <div class="grid grid-cols-8 h-fit">
+                        <p class="col-span-8 md:col-span-6 w-full">
                             Though our team is small by design, we're always
                             open to building relationships with standout
                             creatives whose values strongly align with ours. If
@@ -151,8 +213,31 @@ const {
                     </div>
                 </div>
             </div>
-            <div class="col-span-6">
-                <Image src={image} alt={name} class="w-full h-auto block" />
+            <div
+                class="hidden md:flex md:col-span-10 flex-col gap-2 self-start"
+            >
+                {
+                    memberProjects.map((project) => (
+                        <a
+                            href={`/projects/${project.id}`}
+                            class="block w-full"
+                        >
+                            {project.image ? (
+                                <Image
+                                    src={project.image}
+                                    alt={project.client}
+                                    class="w-full h-auto block"
+                                />
+                            ) : project.thumbnail ? (
+                                <img
+                                    src={project.thumbnail}
+                                    alt={project.client}
+                                    class="w-full h-auto block"
+                                />
+                            ) : null}
+                        </a>
+                    ))
+                }
             </div>
         </div>
     </main>

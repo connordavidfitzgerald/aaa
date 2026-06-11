@@ -82,7 +82,7 @@ mux-player {
     --grid-template-columns-11: repeat(11, minmax(0, 1fr));
     --grid-template-columns-14: repeat(14, minmax(0, 1fr));
     --text-xs: clamp(0.6rem, 0.5817rem + 0.1923vw, 0.8rem);
-    --text-md: clamp(0.9rem, 0.8147rem + 0.379vw, 1.2695rem);
+    --text-md: clamp(0.8rem, 0.8147rem + 0.379vw, 1.2695rem);
 
     --text-header: clamp(1.625rem, 0.2917rem + 5.9259vw, 5.625rem);
     --text-header-small: clamp(1.125rem, 1.0385rem + 0.3846vw, 1.5rem);

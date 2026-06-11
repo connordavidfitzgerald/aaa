@@ -59,81 +59,14 @@ const memberImages = [
 
 <Layout title="Applied Archive Atelier">
     <main
-        class="flex flex-col max-h-screen justify-start px-2 w-full h-fit text-xs leading-[115%]"
+        class="flex flex-col justify-start px-2 w-full h-fit text-xs leading-[115%] md:leading-[120%] md:max-h-screen"
     >
         <div
-            class="pt-[calc(var(--nav-height)*1.2)] grid grid-cols-18 gap-2 w-full items-start h-screen overflow-hidden mb-2"
+            class="pt-[calc(var(--nav-height)*1.2)] grid grid-cols-1 md:grid-cols-18 grid-rows-[auto_1fr] md:grid-rows-none gap-2 w-full items-stretch md:items-start mb-2 pb-2 md:pb-0 min-h-[100svh] md:min-h-0 md:h-screen md:overflow-hidden"
         >
-            <div class="col-span-12 h-full flex flex-col justify-between pb-1">
-                <div class="w-full flex flex-col justify-start">
-                    <div class="grid grid-cols-12 gap-x-2 gap-y-0 pb-8">
-                        <div class="col-span-12 pb-4">Core</div>
-                        {
-                            core.map((member) => (
-                                <a
-                                    href={`/team/${member.slug}`}
-                                    data-team-row
-                                    data-member={member.key}
-                                    class="col-span-12 grid grid-cols-12 gap-x-2 relative"
-                                >
-                                    <span
-                                        data-team-hl
-                                        class="absolute inset-0 bg-green scale-y-0 origin-top"
-                                    />
-                                    <p class="col-span-4 relative z-10">
-                                        {member.name}
-                                    </p>
-                                    <p class="col-span-4 relative z-10">
-                                        {member.role}
-                                    </p>
-                                    <p class="col-span-3 relative z-10">
-                                        {member.location}
-                                    </p>
-                                </a>
-                            ))
-                        }
-                    </div>
-                    <div class="grid grid-cols-12 gap-x-2 gap-y-0 pb-8">
-                        <div class="col-span-12 pb-4">Collaborators</div>
-                        {
-                            collaborators.map((member) => (
-                                <a
-                                    href={`/team/${member.slug}`}
-                                    data-team-row
-                                    data-member={member.key}
-                                    class="col-span-12 grid grid-cols-12 gap-x-2 relative"
-                                >
-                                    <span
-                                        data-team-hl
-                                        class="absolute inset-0 bg-green scale-y-0 origin-top"
-                                    />
-                                    <p class="col-span-4 relative z-10">
-                                        {member.name}
-                                    </p>
-                                    <p class="col-span-4 relative z-10">
-                                        {member.role}
-                                    </p>
-                                    <p class="col-span-3 relative z-10">
-                                        {member.location}
-                                    </p>
-                                </a>
-                            ))
-                        }
-                    </div>
-                </div>
-                <div class="w-full flex flex-col justify-end">
-                    <div class="grid grid-cols-12 gap-2 h-fit">
-                        <p class="col-span-6 w-full">
-                            Though our team is small by design, we're always
-                            open to building relationships with standout
-                            creatives whose values strongly align with ours. If
-                            our approach resonates with you, we'd love to hear
-                            from you at jobs@appliedarchive.com.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-span-6 relative">
+            <div
+                class="order-1 md:order-2 md:col-span-6 relative w-1/2 md:w-full self-start"
+            >
                 <Image
                     src={team}
                     alt="team"
@@ -146,16 +79,94 @@ const memberImages = [
                             src={img.src}
                             alt={img.alt}
                             data-team-image={img.key}
-                            class="absolute inset-0 w-full h-full object-cover block opacity-0"
+                            class="hidden md:block absolute inset-0 w-full h-full object-cover opacity-0"
                         />
                     ))
                 }
+            </div>
+            <div
+                class="order-2 md:order-1 md:col-span-12 h-full flex flex-col justify-between gap-8 md:gap-0"
+            >
+                <div class="w-full flex flex-col justify-start">
+                    <div class="grid grid-cols-12 gap-x-2 gap-y-0 pb-6 md:pb-8">
+                        <div class="col-span-12 pb-4">TEAM</div>
+                        <div class="col-span-12 pb-2 md:pb-4 opacity-70">
+                            Core
+                        </div>
+                        {
+                            core.map((member) => (
+                                <a
+                                    href={`/team/${member.slug}`}
+                                    data-team-row
+                                    data-member={member.key}
+                                    class="col-span-12 grid grid-cols-12 gap-x-2 relative py-2 md:py-0 border-b border-black/10 md:border-0 last:border-0"
+                                >
+                                    <span
+                                        data-team-hl
+                                        class="absolute inset-0 bg-green scale-y-0 origin-top hidden md:block"
+                                    />
+                                    <p class="col-span-12 md:col-span-4 relative z-10">
+                                        {member.name}
+                                    </p>
+                                    <p class="col-span-7 md:col-span-4 relative z-10 opacity-70 md:opacity-100">
+                                        {member.role}
+                                    </p>
+                                    <p class="col-span-5 md:col-span-3 relative z-10 opacity-70 md:opacity-100 text-right md:text-left">
+                                        {member.location}
+                                    </p>
+                                </a>
+                            ))
+                        }
+                    </div>
+                    <div class="grid grid-cols-12 gap-x-2 gap-y-0 pb-6 md:pb-8">
+                        <div class="col-span-12 pb-2 md:pb-4 opacity-70">
+                            Collaborators
+                        </div>
+                        {
+                            collaborators.map((member) => (
+                                <a
+                                    href={`/team/${member.slug}`}
+                                    data-team-row
+                                    data-member={member.key}
+                                    class="col-span-12 grid grid-cols-12 gap-x-2 relative py-2 md:py-0 border-b border-black/10 md:border-0 last:border-0"
+                                >
+                                    <span
+                                        data-team-hl
+                                        class="absolute inset-0 bg-green scale-y-0 origin-top hidden md:block"
+                                    />
+                                    <p class="col-span-12 md:col-span-4 relative z-10">
+                                        {member.name}
+                                    </p>
+                                    <p class="col-span-7 md:col-span-4 relative z-10 opacity-70 md:opacity-100">
+                                        {member.role}
+                                    </p>
+                                    <p class="col-span-5 md:col-span-3 relative z-10 opacity-70 md:opacity-100 text-right md:text-left">
+                                        {member.location}
+                                    </p>
+                                </a>
+                            ))
+                        }
+                    </div>
+                </div>
+                <div class="w-full flex flex-col justify-end">
+                    <div class="grid grid-cols-12 gap-2 h-fit">
+                        <p class="col-span-12 md:col-span-6 w-full h-fit">
+                            Though our team is small by design, we're always
+                            open to building relationships with standout
+                            creatives whose values strongly align with ours. If
+                            our approach resonates with you, we'd love to hear
+                            from you at jobs@appliedarchive.com.
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
 
     <script>
         import { gsap } from "gsap";
+
+        const canHover = window.matchMedia("(hover: hover)").matches;
 
         const rows = document.querySelectorAll<HTMLElement>("[data-team-row]");
         const memberImages = document.querySelectorAll<HTMLElement>(
@@ -177,47 +188,49 @@ const memberImages = [
         window.addEventListener("pageshow", () => resetAll());
         window.addEventListener("pagehide", () => resetAll());
 
-        rows.forEach((row) => {
-            const hl = row.querySelector<HTMLElement>("[data-team-hl]");
-            const member = row.dataset.member;
-            if (!hl) return;
+        if (canHover) {
+            rows.forEach((row) => {
+                const hl = row.querySelector<HTMLElement>("[data-team-hl]");
+                const member = row.dataset.member;
+                if (!hl) return;
 
-            gsap.set(hl, { scaleY: 0, transformOrigin: "center top" });
+                gsap.set(hl, { scaleY: 0, transformOrigin: "center top" });
 
-            row.addEventListener("mouseenter", () => {
-                gsap.to(hl, {
-                    scaleY: 1,
-                    transformOrigin: "center top",
-                    duration: 0.25,
-                    ease: "power3.out",
-                    overwrite: true,
+                row.addEventListener("mouseenter", () => {
+                    gsap.to(hl, {
+                        scaleY: 1,
+                        transformOrigin: "center top",
+                        duration: 0.25,
+                        ease: "power3.out",
+                        overwrite: true,
+                    });
+                    memberImages.forEach((img) => {
+                        gsap.set(img, {
+                            opacity: img.dataset.teamImage === member ? 1 : 0,
+                        });
+                    });
                 });
-                memberImages.forEach((img) => {
-                    gsap.set(img, {
-                        opacity: img.dataset.teamImage === member ? 1 : 0,
+
+                row.addEventListener("mouseleave", () => {
+                    gsap.to(hl, {
+                        scaleY: 0,
+                        transformOrigin: "center bottom",
+                        duration: 0.05,
+                        ease: "power3.out",
+                        overwrite: true,
+                    });
+                    memberImages.forEach((img) => {
+                        gsap.set(img, { opacity: 0 });
+                    });
+                });
+
+                row.addEventListener("click", () => {
+                    gsap.set(hl, { scaleY: 0, transformOrigin: "center top" });
+                    memberImages.forEach((img) => {
+                        gsap.set(img, { opacity: 0 });
                     });
                 });
             });
-
-            row.addEventListener("mouseleave", () => {
-                gsap.to(hl, {
-                    scaleY: 0,
-                    transformOrigin: "center bottom",
-                    duration: 0.05,
-                    ease: "power3.out",
-                    overwrite: true,
-                });
-                memberImages.forEach((img) => {
-                    gsap.set(img, { opacity: 0 });
-                });
-            });
-
-            row.addEventListener("click", () => {
-                gsap.set(hl, { scaleY: 0, transformOrigin: "center top" });
-                memberImages.forEach((img) => {
-                    gsap.set(img, { opacity: 0 });
-                });
-            });
-        });
+        }
     </script>
 </Layout>
