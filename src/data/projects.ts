@@ -107,8 +107,8 @@ export const projects: Project[] = [
     ],
     credits: ["Luckensy Odigé"],
     links: [
-      { label: "Website", href: "#" },
-      { label: "Instagram", href: "#" },
+      { label: "Website", href: "https://ellipsemagazine.com/" },
+      { label: "Instagram", href: "https://www.instagram.com/ellipse.mag/" },
     ],
   },
   {
@@ -132,6 +132,14 @@ export const projects: Project[] = [
       [img(eco6, "Ecozoic"), img(eco7, "Ecozoic")],
       video("N00I4BmynmbwdiAgM9CMT2ytS01iZrMnBp6qqy112RZFM"),
     ],
+    credits: ["Jean-Julien Hazoumé"],
+    links: [
+      { label: "Website", href: "https://l4ecozoic.org/" },
+      {
+        label: "Instagram",
+        href: "https://www.instagram.com/leadershipfortheecozoic/",
+      },
+    ],
   },
   {
     id: "bxb",
@@ -142,6 +150,10 @@ export const projects: Project[] = [
     services: "Identity, Campaign, Strategy, Art Direction",
     team: "Johnelle Smith, Rachel Seatvet",
     date: "2025",
+    links: [
+      { label: "Website", href: "https://briqueparbrique.com/" },
+      { label: "Instagram", href: "https://www.instagram.com/briquexbrique/" },
+    ],
     muxPlaybackId: "00f02eD6Vs5T023j702VlB02uJls43i94H166Gdjb02gSPlPs",
     thumbnail:
       "https://image.mux.com/00f02eD6Vs5T023j702VlB02uJls43i94H166Gdjb02gSPlPs/thumbnail.jpg",
@@ -166,7 +178,18 @@ export const projects: Project[] = [
     services: "Website",
     team: "Johnelle Smith",
     date: "2025",
+    links: [
+      {
+        label: "Website",
+        href: "https://www.ctrlalt.ca/",
+      },
+      {
+        label: "Instagram",
+        href: "https://www.instagram.com/ctrlaltfest/",
+      },
+    ],
     image: ctrl1,
+    credits: ["Johnelle Smith"],
     imageAlt: "CTRL+ALT thumbnail",
     media: [
       img(ctrl1, "CTRL+ALT"),
@@ -195,6 +218,11 @@ export const projects: Project[] = [
       "chimie is a Montréal-based sensory project cultivating curiosity and connection around scent, through workshops, gatherings, and collaborations. We developed their branding, built their website, and shaped a community-minded social strategy.",
     services: "Identity, Social Strategy, Website, Art Direction",
     team: "Jean-Julien Hazoumé",
+    credits: ["Jean-Julien Hazoumé"],
+    links: [
+      { label: "Website", href: "https://chimiescent.com/" },
+      { label: "Instagram", href: "https://www.instagram.com/chimiescent/" },
+    ],
     date: "2024",
     image: chimieWall,
     imageAlt: "CHIMIE thumbnail",

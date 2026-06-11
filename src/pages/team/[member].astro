@@ -119,19 +119,33 @@ const memberProjects = projectIds
                             <div class="grid grid-cols-4 gap-x-2">
                                 <a
                                     href={instagram}
-                                    class="col-span-2"
+                                    data-nav-link
+                                    class="col-span-2 relative flex items-center w-fit"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
-                                    Instagram <span class="text-[10px]">↗</span>
+                                    <span
+                                        data-nav-hl
+                                        class="absolute inset-0 bg-green scale-y-0 origin-top"
+                                    />
+                                    <span class="relative z-10">
+                                        Instagram <span class="text-[10px]">↗</span>
+                                    </span>
                                 </a>
                                 <a
                                     href={linkedin}
-                                    class="col-span-2"
+                                    data-nav-link
+                                    class="col-span-2 relative flex items-center w-fit"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
-                                    LinkedIn <span class="text-[10px]">↗</span>
+                                    <span
+                                        data-nav-hl
+                                        class="absolute inset-0 bg-green scale-y-0 origin-top"
+                                    />
+                                    <span class="relative z-10">
+                                        LinkedIn <span class="text-[10px]">↗</span>
+                                    </span>
                                 </a>
                             </div>
                         </div>
@@ -157,19 +171,33 @@ const memberProjects = projectIds
                             <p class="col-span-3 pb-8">{bio}</p>
                             <a
                                 href={instagram}
-                                class="col-span-2"
+                                data-nav-link
+                                class="col-span-2 relative flex items-center w-fit"
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
-                                Instagram <span class="text-[10px]">↗</span>
+                                <span
+                                    data-nav-hl
+                                    class="absolute inset-0 bg-green scale-y-0 origin-top"
+                                />
+                                <span class="relative z-10">
+                                    Instagram <span class="text-[10px]">↗</span>
+                                </span>
                             </a>
                             <a
                                 href={linkedin}
-                                class="col-span-2"
+                                data-nav-link
+                                class="col-span-2 relative flex items-center w-fit"
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
-                                LinkedIn <span class="text-[10px]">↗</span>
+                                <span
+                                    data-nav-hl
+                                    class="absolute inset-0 bg-green scale-y-0 origin-top"
+                                />
+                                <span class="relative z-10">
+                                    LinkedIn <span class="text-[10px]">↗</span>
+                                </span>
                             </a>
                         </div>
                     </div>
