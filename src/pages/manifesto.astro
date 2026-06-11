@@ -15,13 +15,15 @@ import approach from "../assets/images/APPROACH.png";
     <main
         class="flex flex-col justify-start px-2 w-full text-xs leading-[115%]"
     >
-        <div class="fixed inset-x-0 bottom-0 px-2 pb-2 pointer-events-none">
+        <div
+            class="fixed inset-0 translate-y-[40%] px-2 pb-2 pointer-events-none"
+        >
             <div class="relative w-full">
                 <Image
                     src={manifesto}
                     alt="Manifesto"
                     data-bg="manifesto"
-                    class="w-full opacity-10 block"
+                    class="w-full opacity-6 block"
                 />
                 <Image
                     src={approach}
@@ -59,11 +61,11 @@ import approach from "../assets/images/APPROACH.png";
                 The work flows to whoever can carry it best.<br /><br />
                 And the credit stays with the work,<br /><br />
                 because how it is built is part of what it stands for.<br /><br
-                /><br />
+                /><br /><br />
 
                 The work is carried long after the launch,<br /><br />
                 when the applause has faded and the making goes on.<br /><br />
-                Devotion outlasts attention.<br /><br /><br />
+                Devotion outlasts attention.<br /><br /><br /><br />
 
                 If what you are building matters to the people you serve,<br
                 /><br />
@@ -72,7 +74,7 @@ import approach from "../assets/images/APPROACH.png";
             </div>
         </div>
 
-        <div class="h-screen min-h-200 pointer-events-none z-0"></div>
+        <div class="h-screen min-h-100 pointer-events-none z-0"></div>
 
         <div
             data-pillars-section
@@ -155,10 +157,10 @@ import approach from "../assets/images/APPROACH.png";
             start: "top bottom",
             onEnter: () => {
                 gsap.to(bgManifesto, { opacity: 0, duration: 0.5 });
-                gsap.to(bgApproach, { opacity: 0.1, duration: 0.5 });
+                gsap.to(bgApproach, { opacity: 0.06, duration: 0.5 });
             },
             onLeaveBack: () => {
-                gsap.to(bgManifesto, { opacity: 0.1, duration: 0.5 });
+                gsap.to(bgManifesto, { opacity: 0.06, duration: 0.5 });
                 gsap.to(bgApproach, { opacity: 0, duration: 0.5 });
             },
         });

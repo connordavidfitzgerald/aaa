@@ -95,7 +95,7 @@ export const projects: Project[] = [
       "Established in 1969, ellipse is a magazine published twice yearly and presents the work of writers in English and French translation. After a brief hiatus, they contacted us to work on a redesign for the 90th issue.",
     services: "Editorial Design",
     team: "Luckensy Odigé",
-    date: "2024",
+    date: "2025",
     image: ellipseCover,
     imageAlt: "Ellipse cover",
     media: [
@@ -117,9 +117,9 @@ export const projects: Project[] = [
     client: "Leadership for the Ecozoic",
     description:
       "Leadership for the Ecozoic is a transdisciplinary research initiative based at McGill University and the University of Vermont, working toward a just and ecologically sustainable future. We rebuilt their visual identity from the ground up, bringing a contemporary look to a long-running academic program.",
-    services: "Services",
-    team: "Team member",
-    date: "2024",
+    services: "Identity, Website, Art Direction",
+    team: "Jean-Julien Hazoumé",
+    date: "2025",
     image: eco1,
     imageAlt: "Ecozoic",
     media: [
@@ -139,9 +139,9 @@ export const projects: Project[] = [
     client: "Brique par brique",
     description:
       "Brique par Brique is a Parc-Extension organization building community housing and cultural infrastructure in Montréal. We developed the identity for their campaign to raise money for affordable housing and a new community centre.",
-    services: "Services",
-    team: "Team member",
-    date: "2024",
+    services: "Identity, Campaign, Strategy, Art Direction",
+    team: "Johnelle Smith, Rachel Seatvet",
+    date: "2025",
     muxPlaybackId: "00f02eD6Vs5T023j702VlB02uJls43i94H166Gdjb02gSPlPs",
     thumbnail:
       "https://image.mux.com/00f02eD6Vs5T023j702VlB02uJls43i94H166Gdjb02gSPlPs/thumbnail.jpg",
@@ -163,9 +163,9 @@ export const projects: Project[] = [
     client: "CTRL+ALT",
     description:
       "CTRL+ALT is a Montréal festival dedicated to the Queer artists of the city's nightlife, spanning drag, burlesque, dance, and electronic music. We built their website to promote their 2025 edition of the festival.",
-    services: "Services",
-    team: "Team member",
-    date: "2024",
+    services: "Website",
+    team: "Johnelle Smith",
+    date: "2025",
     image: ctrl1,
     imageAlt: "CTRL+ALT thumbnail",
     media: [
@@ -193,8 +193,8 @@ export const projects: Project[] = [
     client: "Chimie",
     description:
       "chimie is a Montréal-based sensory project cultivating curiosity and connection around scent, through workshops, gatherings, and collaborations. We developed their branding, built their website, and shaped a community-minded social strategy.",
-    services: "Services",
-    team: "Team member",
+    services: "Identity, Social Strategy, Website, Art Direction",
+    team: "Jean-Julien Hazoumé",
     date: "2024",
     image: chimieWall,
     imageAlt: "CHIMIE thumbnail",

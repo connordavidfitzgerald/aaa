@@ -14,16 +14,26 @@ const { item } = Astro.props;
     item.kind === "image" ? (
         <Image src={item.src} alt={item.alt ?? ""} class="w-full h-auto" />
     ) : (
-        <MuxPlayer
-            playback-id={item.muxPlaybackId}
-            class="w-full"
-            style="--media-background-color: white;"
-            loop
-            muted
-            max-resolution="2160p"
-            min-resolution="1080p"
-            playsinline
-            preload="auto"
-        />
+        <div class="relative w-full">
+            <img
+                src={
+                    item.thumbnail ??
+                    `https://image.mux.com/${item.muxPlaybackId}/thumbnail.jpg`
+                }
+                alt=""
+                class="w-full h-auto block"
+            />
+            <MuxPlayer
+                playback-id={item.muxPlaybackId}
+                class="absolute inset-0 w-full h-full"
+                style="--media-background-color: white;"
+                loop
+                muted
+                max-resolution="2160p"
+                min-resolution="1080p"
+                playsinline
+                preload="auto"
+            />
+        </div>
     )
 }

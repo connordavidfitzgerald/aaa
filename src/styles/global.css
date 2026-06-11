@@ -43,6 +43,8 @@ html::-webkit-scrollbar {
     font-display: swap;
 }
 mux-player {
+    width: 100%;
+    display: block;
     /* Hide all controls at once */
     --controls: none;
 

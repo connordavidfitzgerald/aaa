@@ -68,19 +68,20 @@ import { projects } from "../data/projects";
                             <div class="col-span-18 md:col-span-16 md:col-start-3 pt-1.5">
                                 <div class="relative w-full overflow-hidden flex bg-green group">
                                     {project.muxPlaybackId ? (
-                                        <div
-                                            class="relative w-full bg-cover bg-center group-hover:mix-blend-multiply"
-                                            style={
-                                                project.thumbnail
-                                                    ? `background-image: url('${project.thumbnail}')`
-                                                    : ""
-                                            }
-                                        >
+                                        <div class="relative w-full group-hover:mix-blend-multiply">
+                                            <img
+                                                src={
+                                                    project.thumbnail ??
+                                                    `https://image.mux.com/${project.muxPlaybackId}/thumbnail.jpg`
+                                                }
+                                                alt=""
+                                                class="w-full h-auto block"
+                                            />
                                             <MuxPlayer
                                                 playback-id={
                                                     project.muxPlaybackId
                                                 }
-                                                class="w-full object-cover h-full"
+                                                class="absolute inset-0 w-full h-full"
                                                 style="--media-background-color: white;"
                                                 loop
                                                 muted

@@ -9,7 +9,7 @@ import johnelle from "../../assets/images/johnelle.jpg";
 import reatchy from "../../assets/images/reatchy.jpg";
 
 export function getStaticPaths() {
-    const projectIds = ["chimie", "bxb", "ecozoic"];
+    const projectIds = ["chimie", "bxb", "ecozoic", "ctrl", "ellipse"];
     return [
         {
             params: { member: "jean-julien" },
@@ -20,7 +20,7 @@ export function getStaticPaths() {
                 bio: "Jean-Julien Hazoumé, creative direction, design & development. Propels each mission toward the form that amplifies it – from a no-code site to an object",
                 instagram: "https://instagram.com",
                 linkedin: "https://linkedin.com",
-                projectIds,
+                projectIds: ["chimie", "ecozoic"],
             },
         },
         {
@@ -32,7 +32,7 @@ export function getStaticPaths() {
                 bio: "Luckensy Odigé, graphic design, illustration, photography. Watches over the identity of a mission – poster, report, campaign, image – so it stays legible from one culture to the next.",
                 instagram: "https://instagram.com",
                 linkedin: "https://linkedin.com",
-                projectIds,
+                projectIds: ["ellipse"],
             },
         },
         {
@@ -44,7 +44,7 @@ export function getStaticPaths() {
                 bio: "Jordane Kaluma, semiotics, creative strategy, funding. Reads the cultural signals beneath a project and turns them into positioning, language, and the funding that keeps a mission alive.",
                 instagram: "https://instagram.com",
                 linkedin: "https://linkedin.com",
-                projectIds,
+                projectIds: [""],
             },
         },
         {
@@ -56,7 +56,7 @@ export function getStaticPaths() {
                 bio: "Johnelle Smith, graphic and experiential design. Treats design as cultural infrastructure – identities and spaces that make room for the artists, organizers, and institutions shaping cultural life.",
                 instagram: "https://instagram.com",
                 linkedin: "https://linkedin.com",
-                projectIds,
+                projectIds: ["bxb", "ctrl"],
             },
         },
         {
@@ -68,7 +68,7 @@ export function getStaticPaths() {
                 bio: "Reatchy Legros, direction and video. Directs and edits films that carry a point of view, from shoot to final cut – to mirror, question, and enchant the real.",
                 instagram: "https://instagram.com",
                 linkedin: "https://linkedin.com",
-                projectIds,
+                projectIds: [""],
             },
         },
     ];
