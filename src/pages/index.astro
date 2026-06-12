@@ -8,10 +8,22 @@ import { projects } from "../data/projects";
 ---
 
 <Layout title="Applied Archive Atelier">
-    <main class="flex flex-col items-center justify-center px-2 pb-8">
+    <main class="flex flex-col justify-start px-2 pb-8">
+        <section
+            id="video"
+            class="h-fit pt-[var(--nav-height)] flex flex-col justify-center items-center"
+        >
+            <MuxPlayer
+                playbackId="iU8heoPsVZrdSsS9D006daozDYoI01D7pHFNoSSSuDkuc"
+                autoplay
+                muted
+                minResolution="1080p"
+                loop
+            />
+        </section>
         <section
             id="tagline"
-            class="h-screen min-h-270 flex flex-col justify-center items-center"
+            class="w-full aspect-video flex flex-col justify-center items-center"
         >
             <h3 class="text-md bg-green leading-[120%] px-1 pt-0.5">
                 Some work is worth doing together.
