@@ -7,6 +7,10 @@ import luckensy from "../assets/images/luckensy.jpg";
 import jordane from "../assets/images/jordane.jpg";
 import johnelle from "../assets/images/johnelle.jpg";
 import reatchy from "../assets/images/reatchy.jpg";
+import { projects } from "../data/projects";
+
+const projectsForMember = (name: string) =>
+    projects.filter((p) => p.team.includes(name)).map((p) => p.client);
 
 const core = [
     {
@@ -55,111 +59,82 @@ const memberImages = [
     { key: "johnelle", src: johnelle, alt: "Johnelle Smith" },
     { key: "reatchy", src: reatchy, alt: "Reatchy Legros" },
 ];
+
+const sections = [
+    { label: "Core", members: core },
+    { label: "Collaborators", members: collaborators },
+];
 ---
 
 <Layout title="Applied Archive Atelier">
-    <main
-        class="flex flex-col justify-start px-2 w-full h-fit text-xs leading-[115%] md:leading-[120%] md:max-h-screen"
-    >
+    <main class="flex flex-col px-2 text-xs leading-[120%] md:min-h-screen">
         <div
-            class="pt-[calc(var(--nav-height)*1.2)] grid grid-cols-1 md:grid-cols-18 grid-rows-[auto_1fr] md:grid-rows-none gap-2 w-full items-stretch md:items-start mb-2 pb-2 md:pb-0 min-h-[100svh] md:min-h-0 md:h-screen md:overflow-hidden"
+            class="flex md:flex-1 items-center pt-[calc(var(--nav-height)*1.2)] md:pt-[var(--nav-height)] md:pb-6"
         >
-            <div
-                class="order-1 md:order-2 md:col-span-6 relative w-1/2 md:w-full self-start"
-            >
-                <Image
-                    src={team}
-                    alt="team"
-                    class="w-full h-auto block"
-                    data-team-image="default"
-                />
-                {
-                    memberImages.map((img) => (
-                        <Image
-                            src={img.src}
-                            alt={img.alt}
-                            data-team-image={img.key}
-                            class="hidden md:block absolute inset-0 w-full h-full object-cover opacity-0"
-                        />
-                    ))
-                }
+            <div class="grid grid-cols-18 gap-2 w-full">
+                <div
+                    class="col-span-12 col-start-4 md:col-start-7 md:col-span-6 aspect-square relative"
+                >
+                    <Image
+                        src={team}
+                        alt="team"
+                        class="absolute inset-0 w-full h-full object-cover block"
+                        data-team-image="default"
+                    />
+                    {
+                        memberImages.map((img) => (
+                            <Image
+                                src={img.src}
+                                alt={img.alt}
+                                data-team-image={img.key}
+                                class="hidden md:block absolute inset-0 w-full h-full object-cover opacity-0"
+                            />
+                        ))
+                    }
+                </div>
             </div>
-            <div
-                class="order-2 md:order-1 md:col-span-12 h-full flex flex-col justify-between gap-8 md:gap-0"
-            >
-                <div class="w-full flex flex-col justify-start">
-                    <div class="grid grid-cols-12 gap-x-2 gap-y-0 pb-6 md:pb-8">
-                        <div class="col-span-12 pb-4">TEAM</div>
-                        <div class="col-span-12 pb-2 md:pb-4 opacity-70">
-                            Core
-                        </div>
-                        {
-                            core.map((member) => (
+        </div>
+        <div class="flex flex-col gap-0 md:pt-0 pb-4">
+            {
+                sections.map((section) => (
+                    <div class="border-t border-black/20 pt-2 pb-2">
+                        {section.members.map((member, i) => {
+                            const memberProjects = projectsForMember(
+                                member.name,
+                            );
+                            return (
                                 <a
                                     href={`/team/${member.slug}`}
                                     data-team-row
                                     data-member={member.key}
-                                    class="col-span-12 grid grid-cols-12 gap-x-2 relative py-2 md:py-0 border-b border-black/10 md:border-0 last:border-0"
+                                    class="grid grid-cols-12 md:grid-cols-18 gap-x-2 relative"
                                 >
                                     <span
                                         data-team-hl
                                         class="absolute inset-0 bg-green scale-y-0 origin-top hidden md:block"
                                     />
+                                    <p class="col-span-12 md:col-span-2 relative z-10 opacity-70">
+                                        {i === 0 ? section.label : ""}
+                                    </p>
                                     <p class="col-span-12 md:col-span-4 relative z-10">
                                         {member.name}
                                     </p>
-                                    <p class="col-span-7 md:col-span-4 relative z-10 opacity-70 md:opacity-100">
+                                    <p class="col-span-6 md:col-span-4 relative z-10 opacity-70 md:opacity-100">
                                         {member.role}
                                     </p>
-                                    <p class="col-span-5 md:col-span-3 relative z-10 opacity-70 md:opacity-100 text-right md:text-left">
+                                    <p class="col-span-6 md:col-span-4 relative z-10 opacity-70 md:opacity-100 text-right md:text-left">
                                         {member.location}
                                     </p>
-                                </a>
-                            ))
-                        }
-                    </div>
-                    <div class="grid grid-cols-12 gap-x-2 gap-y-0 pb-6 md:pb-8">
-                        <div class="col-span-12 pb-2 md:pb-4 opacity-70">
-                            Collaborators
-                        </div>
-                        {
-                            collaborators.map((member) => (
-                                <a
-                                    href={`/team/${member.slug}`}
-                                    data-team-row
-                                    data-member={member.key}
-                                    class="col-span-12 grid grid-cols-12 gap-x-2 relative py-2 md:py-0 border-b border-black/10 md:border-0 last:border-0"
-                                >
-                                    <span
-                                        data-team-hl
-                                        class="absolute inset-0 bg-green scale-y-0 origin-top hidden md:block"
-                                    />
-                                    <p class="col-span-12 md:col-span-4 relative z-10">
-                                        {member.name}
-                                    </p>
-                                    <p class="col-span-7 md:col-span-4 relative z-10 opacity-70 md:opacity-100">
-                                        {member.role}
-                                    </p>
-                                    <p class="col-span-5 md:col-span-3 relative z-10 opacity-70 md:opacity-100 text-right md:text-left">
-                                        {member.location}
+                                    <p class="col-span-12 md:col-span-4 relative z-10 flex justify-between gap-2">
+                                        <span>{memberProjects.join(", ")}</span>
+                                        <span>[+]</span>
                                     </p>
                                 </a>
-                            ))
-                        }
+                            );
+                        })}
                     </div>
-                </div>
-                <div class="w-full flex flex-col justify-end">
-                    <div class="grid grid-cols-12 gap-2 h-fit">
-                        <p class="col-span-12 md:col-span-6 w-full h-fit">
-                            Though our team is small by design, we're always
-                            open to building relationships with standout
-                            creatives whose values strongly align with ours. If
-                            our approach resonates with you, we'd love to hear
-                            from you at jobs@appliedarchive.com.
-                        </p>
-                    </div>
-                </div>
-            </div>
+                ))
+            }
         </div>
     </main>
 
