@@ -21,7 +21,7 @@ import ctrl5 from "../assets/images/ctrl_phone.jpg";
 import ctrl6 from "../assets/images/ctrl_face.jpg";
 
 import bxb1 from "../assets/images/bxb_outdoor.jpg";
-import bxb2 from "../assets/images/BXB_type.jpg";
+import bxb2 from "../assets/images/bxb_type.jpg";
 import bxb3 from "../assets/images/bxb_closeup.jpg";
 import bxb4 from "../assets/images/bxb_pamphlet.jpg";
 import bxb5 from "../assets/images/bxb_infograph.jpg";
