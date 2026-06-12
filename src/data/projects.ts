@@ -21,10 +21,10 @@ import ctrl5 from "../assets/images/ctrl_phone.jpg";
 import ctrl6 from "../assets/images/ctrl_face.jpg";
 
 import bxb1 from "../assets/images/bxb_outdoor.jpg";
-import bxb2 from "../assets/images/bxb_type.png";
+import bxb2 from "../assets/images/BXB_type.jpg";
 import bxb3 from "../assets/images/bxb_closeup.jpg";
 import bxb4 from "../assets/images/bxb_pamphlet.jpg";
-import bxb5 from "../assets/images/bxb_infograph.png";
+import bxb5 from "../assets/images/bxb_infograph.jpg";
 import bxb6 from "../assets/images/bxb_brickposter.jpg";
 
 import chimieCard from "../assets/images/chimiecard.jpg";
@@ -163,7 +163,8 @@ export const projects: Project[] = [
         "https://image.mux.com/00f02eD6Vs5T023j702VlB02uJls43i94H166Gdjb02gSPlPs/thumbnail.jpg",
       ),
       img(bxb1, "Brique par brique"),
-      [img(bxb2, "Brique par brique"), img(bxb3, "Brique par brique")],
+      img(bxb3, "Brique par brique"),
+      img(bxb2, "Brique par brique"),
       img(bxb4, "Brique par brique"),
       img(bxb5, "Brique par brique"),
       img(bxb6, "Brique par brique"),
@@ -193,12 +194,13 @@ export const projects: Project[] = [
     imageAlt: "CTRL+ALT thumbnail",
     media: [
       img(ctrl1, "CTRL+ALT"),
-      [img(ctrl2, "CTRL+ALT"), img(ctrl3, "CTRL+ALT")],
+      img(ctrl2, "CTRL+ALT"),
+      [video("xlzsPwce01N00jVN998LnEtznrJLhfDc02GO01uPZc8TI9w"), img(ctrl4)],
       video(
         "QXAEfL5C1kCOERFnAJ3uuV9icuXqMuAsGoeocmZJrP00",
         "https://image.mux.com/QXAEfL5C1kCOERFnAJ3uuV9icuXqMuAsGoeocmZJrP00/thumbnail.jpg",
       ),
-      [video("xlzsPwce01N00jVN998LnEtznrJLhfDc02GO01uPZc8TI9w"), img(ctrl4)],
+
       video(
         "SghV94zlZPzg01NIOw7P6hZU1r1Fi00AqxEuS3WwjSnqQ",
         "https://image.mux.com/SghV94zlZPzg01NIOw7P6hZU1r1Fi00AqxEuS3WwjSnqQ/thumbnail.jpg",
